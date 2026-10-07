@@ -1,0 +1,81 @@
+烟雾测试报告 / TRAE SOLO EXE 真机端到端验证
+测试时间: 2026-09-16 19:42:58
+EXE: dist/股票价值投资财报分析软件.exe (120 MB)
+总耗时: 58.0s（5 家公司 × 三大表 + 8 个真实性信号）
+
+======================================================================
+  公司         BS         IS         CF         8 信号           综合          
+======================================================================
+  ST卓然       47/49      30/30      34/37      高 2 关 1        🔴 高风险       
+  大唐药业       47/49      28/30      32/37      高 1 关 1        🟡 中风险       
+  贵州茅台       40/49      26/29      35/38      高 0 关 1        🟡 低风险       
+  天键股份       47/49      28/30      34/37      高 1 关 0        🟡 中风险       
+  岩山科技       47/49      28/30      29/37      高 0 关 1        🟡 低风险       
+======================================================================
+
+逐家详情：
+
+【ST卓然】 2025 年报 (9.3s)
+  识别率：BS 47/49 | IS 30/30 | CF 34/37
+  8 个真实性信号：
+    auth_cash_interest_yield           =       0.0406 | 优势             (现金利息收益率)
+    auth_prepayment_ratio              =       0.0513 | 关注             (预付款项/总资产)
+    auth_prepay_other_receivable       =       0.0698 | 一般             ((预付+其他应收)/总资产)
+    auth_cash_receipt_ratio            =       0.6230 | 高风险            (收现比)
+    auth_net_profit_cash_ratio         =       3.9981 | 优势             (净现比)
+    auth_cash_interest_debt_combo      =      55.0765 | 高风险            (息差倍数(BS-有息负债-货币资金/利息费用))
+    auth_fixed_assets_growth           =         None | 不适用            (固定+在建 yoy（多年）)
+    auth_gross_margin_volatility       =         None | 不适用            (毛利率波动（多年）)
+  综合判定：🔴 高风险（高风险 2 | 关注 1）
+
+【大唐药业】 2025 年报 (13.1s)
+  识别率：BS 47/49 | IS 28/30 | CF 32/37
+  8 个真实性信号：
+    auth_cash_interest_yield           =       0.0011 | 关注             (现金利息收益率)
+    auth_prepayment_ratio              =       0.0083 | 优势             (预付款项/总资产)
+    auth_prepay_other_receivable       =       0.0087 | 一般             ((预付+其他应收)/总资产)
+    auth_cash_receipt_ratio            =       1.1743 | 优势             (收现比)
+    auth_net_profit_cash_ratio         =       0.1611 | 高风险            (净现比)
+    auth_cash_interest_debt_combo      =    -170.6932 | 优势             (息差倍数(BS-有息负债-货币资金/利息费用))
+    auth_fixed_assets_growth           =         None | 不适用            (固定+在建 yoy（多年）)
+    auth_gross_margin_volatility       =         None | 不适用            (毛利率波动（多年）)
+  综合判定：🟡 中风险（高风险 1 | 关注 1）
+
+【贵州茅台】 2018 年报 (11.1s)
+  识别率：BS 40/49 | IS 26/29 | CF 35/38
+  8 个真实性信号：
+    auth_cash_interest_yield           =       0.0005 | 关注             (现金利息收益率)
+    auth_prepayment_ratio              =       0.0074 | 优势             (预付款项/总资产)
+    auth_prepay_other_receivable       =       0.0099 | 一般             ((预付+其他应收)/总资产)
+    auth_cash_receipt_ratio            =       3.2658 | 优势             (收现比)
+    auth_net_profit_cash_ratio         =       1.0940 | 一般             (净现比)
+    auth_cash_interest_debt_combo      =  -34675.0427 | 优势             (息差倍数(BS-有息负债-货币资金/利息费用))
+    auth_fixed_assets_growth           =         None | 不适用            (固定+在建 yoy（多年）)
+    auth_gross_margin_volatility       =         None | 不适用            (毛利率波动（多年）)
+  综合判定：🟡 低风险（高风险 0 | 关注 1）
+
+【天键股份】 2025 年报 (8.8s)
+  识别率：BS 47/49 | IS 28/30 | CF 34/37
+  8 个真实性信号：
+    auth_cash_interest_yield           =       0.0200 | 一般             (现金利息收益率)
+    auth_prepayment_ratio              =       0.0047 | 优势             (预付款项/总资产)
+    auth_prepay_other_receivable       =       0.0194 | 一般             ((预付+其他应收)/总资产)
+    auth_cash_receipt_ratio            =       1.1238 | 优势             (收现比)
+    auth_net_profit_cash_ratio         =      -0.5202 | 高风险            (净现比)
+    auth_cash_interest_debt_combo      =   -1682.5426 | 优势             (息差倍数(BS-有息负债-货币资金/利息费用))
+    auth_fixed_assets_growth           =         None | 不适用            (固定+在建 yoy（多年）)
+    auth_gross_margin_volatility       =         None | 不适用            (毛利率波动（多年）)
+  综合判定：🟡 中风险（高风险 1 | 关注 0）
+
+【岩山科技】 2025 年报 (15.7s)
+  识别率：BS 47/49 | IS 28/30 | CF 29/37
+  8 个真实性信号：
+    auth_cash_interest_yield           =       0.0196 | 关注             (现金利息收益率)
+    auth_prepayment_ratio              =       0.0009 | 优势             (预付款项/总资产)
+    auth_prepay_other_receivable       =       0.0048 | 一般             ((预付+其他应收)/总资产)
+    auth_cash_receipt_ratio            =       7.7428 | 优势             (收现比)
+    auth_net_profit_cash_ratio         =       2.4021 | 优势             (净现比)
+    auth_cash_interest_debt_combo      =   -3523.1403 | 优势             (息差倍数(BS-有息负债-货币资金/利息费用))
+    auth_fixed_assets_growth           =         None | 不适用            (固定+在建 yoy（多年）)
+    auth_gross_margin_volatility       =         None | 不适用            (毛利率波动（多年）)
+  综合判定：🟡 低风险（高风险 0 | 关注 1）

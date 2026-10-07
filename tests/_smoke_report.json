@@ -1,0 +1,462 @@
+{
+  "total_sec": 58.0,
+  "cases": [
+    {
+      "name": "ST卓然",
+      "year": 2025,
+      "recognition": {
+        "BS": {
+          "rec": 47,
+          "total": 49,
+          "missing": []
+        },
+        "IS": {
+          "rec": 30,
+          "total": 30,
+          "missing": []
+        },
+        "CF": {
+          "rec": 34,
+          "total": 37,
+          "missing": []
+        }
+      },
+      "auth": [
+        {
+          "rule_id": "auth_cash_interest_yield",
+          "label": "现金利息收益率",
+          "value": 0.040574279309228245,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepayment_ratio",
+          "label": "预付款项/总资产",
+          "value": 0.05132182785399318,
+          "status": "关注",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepay_other_receivable",
+          "label": "(预付+其他应收)/总资产",
+          "value": 0.06978104925602897,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_receipt_ratio",
+          "label": "收现比",
+          "value": 0.6230426922848472,
+          "status": "高风险",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_net_profit_cash_ratio",
+          "label": "净现比",
+          "value": 3.9980775506345383,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_interest_debt_combo",
+          "label": "息差倍数(BS-有息负债-货币资金/利息费用)",
+          "value": 55.07651311901647,
+          "status": "高风险",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_fixed_assets_growth",
+          "label": "固定+在建 yoy（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_gross_margin_volatility",
+          "label": "毛利率波动（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        }
+      ],
+      "summary": {
+        "high_risk": 2,
+        "attention": 1,
+        "level": "🔴 高风险",
+        "status_count": {
+          "优势": 2,
+          "关注": 1,
+          "一般": 1,
+          "高风险": 2,
+          "不适用": 2
+        }
+      },
+      "elapsed_sec": 9.3
+    },
+    {
+      "name": "大唐药业",
+      "year": 2025,
+      "recognition": {
+        "BS": {
+          "rec": 47,
+          "total": 49,
+          "missing": []
+        },
+        "IS": {
+          "rec": 28,
+          "total": 30,
+          "missing": []
+        },
+        "CF": {
+          "rec": 32,
+          "total": 37,
+          "missing": []
+        }
+      },
+      "auth": [
+        {
+          "rule_id": "auth_cash_interest_yield",
+          "label": "现金利息收益率",
+          "value": 0.001130203151795493,
+          "status": "关注",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepayment_ratio",
+          "label": "预付款项/总资产",
+          "value": 0.008252062499159753,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepay_other_receivable",
+          "label": "(预付+其他应收)/总资产",
+          "value": 0.008715996150488495,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_receipt_ratio",
+          "label": "收现比",
+          "value": 1.1742655763919032,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_net_profit_cash_ratio",
+          "label": "净现比",
+          "value": 0.16106355093115515,
+          "status": "高风险",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_interest_debt_combo",
+          "label": "息差倍数(BS-有息负债-货币资金/利息费用)",
+          "value": -170.69324802289623,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_fixed_assets_growth",
+          "label": "固定+在建 yoy（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_gross_margin_volatility",
+          "label": "毛利率波动（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        }
+      ],
+      "summary": {
+        "high_risk": 1,
+        "attention": 1,
+        "level": "🟡 中风险",
+        "status_count": {
+          "关注": 1,
+          "优势": 3,
+          "一般": 1,
+          "高风险": 1,
+          "不适用": 2
+        }
+      },
+      "elapsed_sec": 13.1
+    },
+    {
+      "name": "贵州茅台",
+      "year": 2018,
+      "recognition": {
+        "BS": {
+          "rec": 40,
+          "total": 49,
+          "missing": []
+        },
+        "IS": {
+          "rec": 26,
+          "total": 29,
+          "missing": []
+        },
+        "CF": {
+          "rec": 35,
+          "total": 38,
+          "missing": []
+        }
+      },
+      "auth": [
+        {
+          "rule_id": "auth_cash_interest_yield",
+          "label": "现金利息收益率",
+          "value": 0.00046935443380411584,
+          "status": "关注",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepayment_ratio",
+          "label": "预付款项/总资产",
+          "value": 0.007396954049952692,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepay_other_receivable",
+          "label": "(预付+其他应收)/总资产",
+          "value": 0.009861131010596496,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_receipt_ratio",
+          "label": "收现比",
+          "value": 3.265828906873546,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_net_profit_cash_ratio",
+          "label": "净现比",
+          "value": 1.0939902875246454,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_interest_debt_combo",
+          "label": "息差倍数(BS-有息负债-货币资金/利息费用)",
+          "value": -34675.04267200593,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_fixed_assets_growth",
+          "label": "固定+在建 yoy（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_gross_margin_volatility",
+          "label": "毛利率波动（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        }
+      ],
+      "summary": {
+        "high_risk": 0,
+        "attention": 1,
+        "level": "🟡 低风险",
+        "status_count": {
+          "关注": 1,
+          "优势": 3,
+          "一般": 2,
+          "不适用": 2
+        }
+      },
+      "elapsed_sec": 11.1
+    },
+    {
+      "name": "天键股份",
+      "year": 2025,
+      "recognition": {
+        "BS": {
+          "rec": 47,
+          "total": 49,
+          "missing": []
+        },
+        "IS": {
+          "rec": 28,
+          "total": 30,
+          "missing": []
+        },
+        "CF": {
+          "rec": 34,
+          "total": 37,
+          "missing": []
+        }
+      },
+      "auth": [
+        {
+          "rule_id": "auth_cash_interest_yield",
+          "label": "现金利息收益率",
+          "value": 0.020036865497799535,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepayment_ratio",
+          "label": "预付款项/总资产",
+          "value": 0.004714704084452672,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepay_other_receivable",
+          "label": "(预付+其他应收)/总资产",
+          "value": 0.019399726937603463,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_receipt_ratio",
+          "label": "收现比",
+          "value": 1.1237648239799476,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_net_profit_cash_ratio",
+          "label": "净现比",
+          "value": -0.5201588208581687,
+          "status": "高风险",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_interest_debt_combo",
+          "label": "息差倍数(BS-有息负债-货币资金/利息费用)",
+          "value": -1682.5426462204082,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_fixed_assets_growth",
+          "label": "固定+在建 yoy（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_gross_margin_volatility",
+          "label": "毛利率波动（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        }
+      ],
+      "summary": {
+        "high_risk": 1,
+        "attention": 0,
+        "level": "🟡 中风险",
+        "status_count": {
+          "一般": 2,
+          "优势": 3,
+          "高风险": 1,
+          "不适用": 2
+        }
+      },
+      "elapsed_sec": 8.8
+    },
+    {
+      "name": "岩山科技",
+      "year": 2025,
+      "recognition": {
+        "BS": {
+          "rec": 47,
+          "total": 49,
+          "missing": []
+        },
+        "IS": {
+          "rec": 28,
+          "total": 30,
+          "missing": []
+        },
+        "CF": {
+          "rec": 29,
+          "total": 37,
+          "missing": []
+        }
+      },
+      "auth": [
+        {
+          "rule_id": "auth_cash_interest_yield",
+          "label": "现金利息收益率",
+          "value": 0.019551297648554677,
+          "status": "关注",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepayment_ratio",
+          "label": "预付款项/总资产",
+          "value": 0.0009005354469954409,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_prepay_other_receivable",
+          "label": "(预付+其他应收)/总资产",
+          "value": 0.004844026592222441,
+          "status": "一般",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_receipt_ratio",
+          "label": "收现比",
+          "value": 7.742804261517957,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_net_profit_cash_ratio",
+          "label": "净现比",
+          "value": 2.4020917147364247,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_cash_interest_debt_combo",
+          "label": "息差倍数(BS-有息负债-货币资金/利息费用)",
+          "value": -3523.140327044036,
+          "status": "优势",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_fixed_assets_growth",
+          "label": "固定+在建 yoy（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        },
+        {
+          "rule_id": "auth_gross_margin_volatility",
+          "label": "毛利率波动（多年）",
+          "value": null,
+          "status": "不适用",
+          "elapsed_ms": 0
+        }
+      ],
+      "summary": {
+        "high_risk": 0,
+        "attention": 1,
+        "level": "🟡 低风险",
+        "status_count": {
+          "关注": 1,
+          "优势": 4,
+          "一般": 1,
+          "不适用": 2
+        }
+      },
+      "elapsed_sec": 15.7
+    }
+  ]
+}

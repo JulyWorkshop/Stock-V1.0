@@ -1,0 +1,438 @@
+{
+  "version": "1.0",
+  "note": "所有阈值严格依据 12 周课程 PDF 原文。课程未明确给出的，thresholds 字段中标记为 null，软件只显示数值与趋势，不发明阈值。每条规则的 course_source 字段标注课程出处（周次+页码）。",
+  "subject_groups": {
+    "quasi_cash": {
+      "description": "准货币资金（课程第15周第5页第十二节）",
+      "items": ["货币资金", "交易性金融资产"],
+      "course_source": "第15周第5页"
+    },
+    "interest_bearing_liabilities": {
+      "description": "有息负债（课程第15周第5页第十二节）",
+      "items": ["短期借款", "一年内到期的非流动负债", "长期借款", "应付债券", "长期应付款"],
+      "course_source": "第15周第5页"
+    },
+    "investment_assets": {
+      "description": "投资类资产（课程第15周第14页第十六节）",
+      "items": [
+        "以公允价值计量且其变动计入当期损益的金融资产",
+        "交易性金融资产",
+        "债权投资",
+        "其他债权投资",
+        "可供出售金融资产",
+        "持有至到期投资",
+        "长期股权投资",
+        "其他权益工具投资",
+        "其他非流动金融资产",
+        "投资性房地产"
+      ],
+      "course_source": "第15周第14页（第十六节了解公司主业专注度）"
+    },
+    "payables_and_advances": {
+      "description": "应付预收（课程第15周第8页第十三节/第19周第6页第三节第5步）",
+      "items": ["应付票据", "应付账款", "预收款项", "合同负债"],
+      "course_source": "第15周第8页（第十三节了解公司竞争优势）/第19周第6页"
+    },
+    "receivables_and_prepayments": {
+      "description": "应收预付（课程第15周第8页/第19周第6页）",
+      "items": ["应收票据", "应收账款", "应收款项融资", "预付款项", "合同资产"],
+      "course_source": "第15周第8页/第19周第6页"
+    },
+    "fixed_assets_construction": {
+      "description": "固定资产+在建工程",
+      "items": ["固定资产", "在建工程"],
+      "course_source": "第15周第12页（第十五节）"
+    }
+  },
+  "rules": [
+    {
+      "id": "asset_liability_ratio",
+      "name": "资产负债率",
+      "step": 4,
+      "formula_ref": "asset_liability_ratio",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "eliminate_above": 0.60,
+        "warning": 0.70,
+        "safe_below": 0.40,
+        "small_risk_below": 0.60
+      },
+      "reference_text": ">60% 淘汰；70% 为警戒线；<40% 基本无风险；40%-60% 风险较小（特殊情况仍可能发生偿债危机）",
+      "course_source": "第15周第5页（第十二节了解公司偿债风险）/第19周第3页（第二节第4步）",
+      "conclusion_template": "资产负债率 {value:.2%}，{status}",
+      "implemented_phase1": true
+    },
+    {
+      "id": "quasi_cash_minus_interest_bearing",
+      "name": "准货币资金 - 有息负债",
+      "step": 4,
+      "formula_ref": "quasi_cash_minus_interest_bearing",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "eliminate_when_negative": true
+      },
+      "reference_text": "差额 < 0：淘汰（偿债风险较高）；差额 > 0：无偿债风险。应收票据中银行承兑票据可看作准货币资金；商业承兑票据约等于应收账款。",
+      "course_source": "第15周第5页（第十二节第二步）/第19周第3页（第二节第4步）",
+      "conclusion_template": "准货币资金-有息负债 = {value}，{status}",
+      "implemented_phase1": true
+    },
+    {
+      "id": "total_assets_growth",
+      "name": "总资产同比增长率",
+      "step": 3,
+      "formula_ref": "total_assets_growth",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "good_above": 0.10
+      },
+      "reference_text": "增长率 > 10% 成长性较好；负增长可能处于收缩或衰退",
+      "course_source": "第19周第2页（第一节第3步）",
+      "conclusion_template": "总资产增长率 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "payables_minus_receivables",
+      "name": "应付预收 - 应收预付",
+      "step": 5,
+      "formula_ref": "payables_minus_receivables",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "eliminate_when_negative": true
+      },
+      "reference_text": "差额 > 0：竞争优势较强；差额 < 0：竞争力弱，淘汰。应收款项融资可看作银行承兑票据，合同资产可看作应收账款，合同负债可看作预收款项。",
+      "course_source": "第15周第8页（第十三节了解公司竞争优势）/第19周第6页（第三节第5步）",
+      "conclusion_template": "应付预收-应收预付 = {value}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "receivable_contract_asset_ratio",
+      "name": "（应收账款+合同资产）/总资产",
+      "step": 6,
+      "formula_ref": "receivable_contract_asset_ratio",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "excellent_below": 0.01,
+        "good_below": 0.03,
+        "hard_to_sell_above": 0.10,
+        "very_hard_above": 0.20,
+        "eliminate_above": 0.15,
+        "special_case_relax_to": 0.20
+      },
+      "reference_text": "<1% 最优秀；<3% 优秀；>10% 产品比较难销售；>20% 产品很难销售；>15% 淘汰（特殊情况行业第一+3核心可放宽到20%）",
+      "course_source": "第15周第11页（第十四节了解公司产品竞争力）/第19周第8页（第四节第6步）",
+      "conclusion_template": "（应收账款+合同资产）/总资产 = {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "fixed_assets_ratio",
+      "name": "（固定资产+在建工程）/总资产",
+      "step": 7,
+      "formula_ref": "fixed_assets_ratio",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "light_asset_below": 0.20,
+        "eliminate_above": 0.40,
+        "special_case_relax_to": 0.50
+      },
+      "reference_text": "<20% 轻资产首选；>40% 淘汰（特殊情况行业第一+3核心可放宽到50%）。保持稳定或持续下降风险小；短期内增幅较大财务造假可能性大。",
+      "course_source": "第15周第12-13页（第十五节了解公司维持竞争力成本）/第19周第9-10页（第五节第7步）",
+      "conclusion_template": "（固定资产+在建工程）/总资产 = {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "investment_assets_ratio",
+      "name": "投资类资产/总资产",
+      "step": 8,
+      "formula_ref": "investment_assets_ratio",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "eliminate_above": 0.10
+      },
+      "reference_text": ">10% 淘汰（主业专注度不足）",
+      "course_source": "第15周第14页（第十六节了解公司主业专注度）",
+      "conclusion_template": "投资类资产/总资产 = {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "inventory_goodwill_risk",
+      "name": "存货与商誉爆雷风险",
+      "step": 9,
+      "formula_ref": "inventory_goodwill_risk",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "receivable_above": 0.05,
+        "inventory_above": 0.15,
+        "goodwill_eliminate_above": 0.10,
+        "goodwill_risk_above": 0.05
+      },
+      "reference_text": "差额>0 且应收账款/总资产<1% 存货基本无爆雷风险；应收账款/总资产>5% 且存货/总资产>15% 爆雷风险大淘汰；商誉/总资产>10% 爆雷风险大淘汰；商誉/总资产>5% 对外投资风险较大",
+      "course_source": "第15周第15-16页（第十六节后续）/第19周第10页（第六节第9步）",
+      "conclusion_template": "存货商誉检查：{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "revenue_growth",
+      "name": "营业收入增长率",
+      "step": 10,
+      "formula_ref": "revenue_growth",
+      "statement_type": "合并利润表",
+      "thresholds": {
+        "good_above": 0.10,
+        "eliminate_below": 0.10
+      },
+      "reference_text": "增长率 > 10% 成长较快；<10% 淘汰；<0 衰退",
+      "course_source": "第17周第13页（第四节营业收入）/第19周第14页（第七节第10步）",
+      "conclusion_template": "营业收入增长率 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "gross_margin",
+      "name": "毛利率",
+      "step": 11,
+      "formula_ref": "gross_margin",
+      "statement_type": "合并利润表",
+      "thresholds": {
+        "high_above": 0.40,
+        "eliminate_below": 0.40,
+        "excellent_volatility_below": 0.10,
+        "eliminate_volatility_above": 0.20
+      },
+      "reference_text": ">40% 高毛利率；<40% 淘汰；优秀公司毛利率每年的波动幅度小于10%；波动幅度大于20% 淘汰",
+      "course_source": "第17周第35-36页（第十二节第二步看毛利率）/第19周第17页（第七节第11步）",
+      "conclusion_template": "毛利率 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "expense_ratio_to_gross_margin",
+      "name": "期间费用率/毛利率",
+      "step": 12,
+      "formula_ref": "expense_ratio_to_gross_margin",
+      "statement_type": "合并利润表",
+      "thresholds": {
+        "excellent_below": 0.40,
+        "eliminate_above": 0.60
+      },
+      "reference_text": "<40% 优秀；>60% 淘汰",
+      "course_source": "第17周第23页（第八节期间费用率）/第19周第19页（第七节第12步）",
+      "conclusion_template": "期间费用率/毛利率 = {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "selling_expense_ratio",
+      "name": "销售费用率",
+      "step": 13,
+      "formula_ref": "selling_expense_ratio",
+      "statement_type": "合并利润表",
+      "thresholds": {
+        "easy_below": 0.15,
+        "middle_range": [0.15, 0.30],
+        "eliminate_above": 0.30
+      },
+      "reference_text": "<15% 产品比较容易销售；15%-30% 竞争力一般销售风险较大；>30% 淘汰",
+      "course_source": "第17周第27页（第九节销售费用率）/第19周第21页（第七节第13步）",
+      "conclusion_template": "销售费用率 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "main_profit_ratio",
+      "name": "主营利润率",
+      "step": 14,
+      "formula_ref": "main_profit_ratio",
+      "statement_type": "合并利润表",
+      "thresholds": {
+        "eliminate_below": 0.15,
+        "main_to_operating_above": 0.80
+      },
+      "reference_text": "主营利润率 <15% 淘汰；主营利润/营业利润 <80% 淘汰",
+      "course_source": "第17周第28-30页（第十节主营利润）/第19周第22页（第七节第14步）",
+      "conclusion_template": "主营利润率 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "net_profit_cash_ratio_5y_avg",
+      "name": "过去5年平均净利润现金比率",
+      "step": 15,
+      "formula_ref": "net_profit_cash_ratio_5y_avg",
+      "statement_type": "跨利润表+现金流量表",
+      "thresholds": {
+        "eliminate_below": 1.00,
+        "excellent_above": 1.20,
+        "good_above": 1.00,
+        "low_below": 0.80
+      },
+      "reference_text": "过去5年平均 <100% 淘汰；持续 >120% 最优秀；持续 >100% 优秀；<80% 质量较低",
+      "course_source": "第18周第7页（第二节）/第19周第23页（第八节第15步）",
+      "conclusion_template": "5年平均净现比 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "roe",
+      "name": "ROE（净资产收益率）",
+      "step": 16,
+      "formula_ref": "roe",
+      "statement_type": "跨利润表+资产负债表",
+      "thresholds": {
+        "excellent_above": 0.20,
+        "good_above": 0.15,
+        "eliminate_below": 0.15
+      },
+      "reference_text": "ROE 持续 >20% 最优秀；持续 >15% 优秀；<15% 淘汰；归母净利润增长率持续 <10% 淘汰；<0 衰落",
+      "course_source": "第17周第34页（第十一节）/第19周第24-25页（第八节第16步）",
+      "conclusion_template": "ROE {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "capex_to_operating_cashflow",
+      "name": "购建长期资产支付现金/经营活动现金流量净额",
+      "step": 17,
+      "formula_ref": "capex_to_operating_cashflow",
+      "statement_type": "合并现金流量表",
+      "thresholds": {
+        "reasonable_range": [0.03, 1.00],
+        "eliminate_above": 1.00,
+        "eliminate_below": 0.03
+      },
+      "reference_text": "合理区间 3%-100%；>100% 或持续 <3% 淘汰；购建金额大但销售商品提供劳务收到的现金不增长风险较大",
+      "course_source": "第18周第8页（第二节）/第19周第26页（第九节第17步）",
+      "conclusion_template": "资本开支/经营现金流 = {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "dividend_to_operating_cashflow",
+      "name": "分配股利利润偿付利息支付现金/经营活动现金流量净额",
+      "step": 18,
+      "formula_ref": "dividend_to_operating_cashflow",
+      "statement_type": "合并现金流量表",
+      "thresholds": {
+        "reasonable_range": [0.20, 0.70],
+        "low_below": 0.20,
+        "high_above": 0.70
+      },
+      "reference_text": "最好 20%-70%；<20% 能力或品质有问题；>70% 分红难以长期持续",
+      "course_source": "第18周第9页（第二节）/第19周第28页（第十节第18步）",
+      "conclusion_template": "分红现金/经营现金流 = {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "auth_cash_interest_yield",
+      "name": "现金利息收益率（真实性检测）",
+      "step": 0,
+      "formula_ref": "cash_interest_yield",
+      "statement_type": "跨利润表+资产负债表",
+      "thresholds": {
+        "normal_above": 0.025,
+        "attention_below": 0.02
+      },
+      "reference_text": "如果货币资金是真的，每年的利息收入应该大于货币资金金额的2.5%；如果每年的利息收入小于货币资金金额的2%，则货币资金金额的真实性很可能有问题。结合有息负债的金额和利息支出来看，如果一家公司账上有很多钱但同时又有很多有息负债，每年需要支付高额利息，那么这家公司的货币资金很可能有问题（康美药业案例）。",
+      "course_source": "第16周第6-7页（第十九节）",
+      "conclusion_template": "现金利息收益率 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "auth_prepayment_ratio",
+      "name": "预付款项/总资产（真实性检测）",
+      "step": 0,
+      "formula_ref": "prepayment_ratio",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "good_below": 0.01,
+        "attention_above": 0.03
+      },
+      "reference_text": "好公司的预付款项占总资产的比率一般低于1%；预付款项占总资产的比率大于3%的公司风险较大",
+      "course_source": "第14周第30页（第七节预付款项）/第15周第5页（第十二节）",
+      "conclusion_template": "预付款项/总资产 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "auth_prepay_other_receivable",
+      "name": "（预付款项+其他应收款）/总资产（真实性检测）",
+      "step": 0,
+      "formula_ref": "prepay_plus_other_receivable_ratio",
+      "statement_type": "合并资产负债表",
+      "thresholds": {
+        "high_abnormal_above": 0.10
+      },
+      "reference_text": "预付款项或其他应收款或（预付款项+其他应收款）占总资产的比率大于10%还是要小心的，异常往往意味着风险，高度异常往往意味着高度风险",
+      "course_source": "第16周第9页（第十九节）",
+      "conclusion_template": "（预付+其他应收）/总资产 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "auth_cash_receipt_ratio",
+      "name": "收现比（真实性检测）",
+      "step": 0,
+      "formula_ref": "cash_receipt_ratio",
+      "statement_type": "跨利润表+现金流量表",
+      "thresholds": {
+        "very_high_above": 1.10,
+        "good_above": 1.00,
+        "excellent_above": 1.20,
+        "low_below": 0.80
+      },
+      "reference_text": "销售商品、提供劳务收到的现金与营业收入的比率大于110%质量很高；大于100%质量较高；大于120%基本先收钱后发货；小于80%白条收入较多",
+      "course_source": "第17周第14页（第四节营业收入）/第18周第5-6页（第二节）",
+      "conclusion_template": "收现比 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "auth_net_profit_cash_ratio",
+      "name": "净现比（真实性检测）",
+      "step": 0,
+      "formula_ref": "net_profit_cash_ratio",
+      "statement_type": "跨利润表+现金流量表",
+      "thresholds": {
+        "excellent_above": 1.20,
+        "good_above": 1.00,
+        "low_below": 0.80
+      },
+      "reference_text": "经营活动产生的现金流量净额与净利润的比率大于100%净利润的质量比较高；小于80%净利润的质量比较低；最优秀的公司持续大于120%",
+      "course_source": "第18周第7页（第二节）",
+      "conclusion_template": "净现比 {value:.2%}，{status}",
+      "implemented_phase1": false
+    },
+    {
+      "id": "auth_cash_interest_debt_combo",
+      "name": "高货币资金+高有息负债+高利息支出组合（真实性检测）",
+      "step": 0,
+      "formula_ref": "cash_interest_debt_combo",
+      "statement_type": "跨资产负债表+利润表",
+      "thresholds": {
+        "safe_below": 0,
+        "warning_above": 5
+      },
+      "reference_text": "账上有很多钱但同时有大量有息负债+高额利息支出，货币资金真实性很可能有问题（康美药业案例）。返回 (有息负债-准货币资金)/利息费用，>5 即息差压力过大。",
+      "course_source": "第16周第6-7页（第十九节）",
+      "conclusion_template": "息差倍数 {value:.2f}（=(有息负债-准货币资金)/利息费用），{status}",
+      "implemented_phase1": true
+    },
+    {
+      "id": "auth_fixed_assets_growth",
+      "name": "（固定资产+在建工程）短期大幅增长（真实性检测）",
+      "step": 0,
+      "formula_ref": "fixed_assets_growth_yoy",
+      "statement_type": "合并资产负债表（需多年）",
+      "thresholds": {
+        "warning_above": 0.30,
+        "high_risk_above": 0.50
+      },
+      "reference_text": "（固定资产+在建工程）与总资产的比率保持稳定或持续下降的公司风险较小；短期内增幅较大（>30% 关注，>50% 高风险）的公司财务造假可能性大",
+      "course_source": "第15周第12页（第十五节）/第19周第9页（第五节第7步）",
+      "conclusion_template": "（固定资产+在建工程）yoy {value:.2%}，{status}",
+      "implemented_phase1": true
+    },
+    {
+      "id": "auth_gross_margin_volatility",
+      "name": "毛利率同比波动（真实性检测）",
+      "step": 0,
+      "formula_ref": "gross_margin_volatility",
+      "statement_type": "合并利润表（需多年）",
+      "thresholds": {
+        "warning_above": 0.20
+      },
+      "reference_text": "毛利率每年的波动幅度小于10%属正常；>20%波动属重大异常，可能存在财务造假或业务剧变",
+      "course_source": "第17周第35-36页（第十二节第二步）",
+      "conclusion_template": "毛利率同比波动 {value:.2%}，{status}",
+      "implemented_phase1": true
+    }
+  ]
+}

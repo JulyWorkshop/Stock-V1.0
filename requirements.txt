@@ -1,0 +1,9 @@
+PySide6>=6.7
+pandas>=2.2
+openpyxl>=3.1
+reportlab>=4.0
+PyMuPDF>=1.24
+pdfplumber>=0.11
+pyqtgraph>=0.13
+PyInstaller>=6.5
+pytest>=8.0
