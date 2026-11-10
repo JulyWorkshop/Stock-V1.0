@@ -1,0 +1,30 @@
+Stock V2.0 网页版第一批代码上传说明
+====================================
+
+目标 GitHub 仓库：
+https://github.com/JulyWorkshop/Stock-V1.0
+
+目标分支：
+web-v2-validation
+
+本压缩包包含：
+- web/                  网页工程代码
+- docs/web-v2/           项目需求、技术方案、决策和状态文档
+- 共 29 个原开发文件
+
+重要：
+1. 不要把这个 ZIP 文件本身上传到 GitHub。请先解压。
+2. 不要上传到 main 分支，只能上传到 web-v2-validation 分支。
+3. 不要把本机 Stock-V1.0 仓库里原有的 52 个待提交文件一起上传。
+   其中包含年报 PDF 等本地文件。
+4. 建议在 GitHub Desktop 中另行 Clone 一份干净仓库到新目录，
+   切换到 web-v2-validation 后，再把本压缩包解压出的 web 和 docs
+   文件夹复制到这份新仓库根目录。
+5. 复制完成后，GitHub Desktop 应只显示本次新增/修改的 web/ 和
+   docs/web-v2/ 文件。检查无误后再提交并 Push。
+6. 目前此批代码仍是第一阶段开发增量，不代表全部功能已完成。
+   非财务信息提取、完整指标覆盖、完整离线测试和 PyMuPDF 许可
+   处理仍未完成。不得将其直接作为正式生产版公开发布。
+
+本地运行说明见 web/README.md。
+Cloudflare Pages 暂不部署，待技术验证和许可证问题解决后再进行。

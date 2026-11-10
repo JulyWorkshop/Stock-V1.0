@@ -1,0 +1,11 @@
+{
+  "name": "Stock V2.0 上市公司财务体检",
+  "short_name": "Stock V2.0",
+  "description": "在浏览器本机完成上市公司年度报告财务分析",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#f5f7fa"
+}
